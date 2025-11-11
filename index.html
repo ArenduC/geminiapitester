@@ -30,12 +30,65 @@
     "react/": "https://aistudiocdn.com/react@^19.2.0/",
     "react": "https://aistudiocdn.com/react@^19.2.0",
     "@supabase/supabase-js": "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm",
-    "react-diff-viewer": "https://esm.sh/react-diff-viewer@3.1.1",
+    "react-diff-view": "https://esm.sh/react-diff-view@4.0.0",
+    "diff": "https://esm.sh/diff@5.1.0",
+    "react-diff-view/utils": "https://esm.sh/react-diff-view@4.0.0/utils",
     "jsonpath-plus": "https://esm.sh/jsonpath-plus@7.2.0",
     "react-dom": "https://aistudiocdn.com/react-dom@^19.2.0"
   }
 }
 </script>
+<style>
+.diff-container {
+    width: 100%;
+    height: 100%;
+}
+.diff {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 0.875rem; /* text-sm */
+    line-height: 1.25rem;
+    width: 100%;
+    border-collapse: collapse;
+}
+.diff-line {
+    display: table-row;
+}
+.diff-gutter {
+    display: table-cell;
+    padding: 0 0.5rem;
+    text-align: right;
+    color: #9090A0; /* gray-400 */
+    background-color: #1C1C22; /* gray-800 */
+    user-select: none;
+    min-width: 50px;
+}
+.diff-gutter:hover {
+    background-color: #2E2E38; /* gray-700 */
+    color: #E4E4E9; /* gray-200 */
+}
+.diff-gutter-omitted:before {
+    content: '...';
+}
+.diff-code {
+    display: table-cell;
+    padding-left: 0.5rem;
+    white-space: pre-wrap;
+    word-break: break-all;
+    width: 50%;
+}
+.diff-line-added .diff-code {
+    background-color: rgba(16, 185, 129, 0.1); /* green-500 with opacity */
+}
+.diff-line-deleted .diff-code {
+    background-color: rgba(239, 68, 68, 0.1); /* red-500 with opacity */
+}
+.diff-line-old-no-newline:after, .diff-line-new-no-newline:after {
+    content: "\\ No newline at end of file";
+    color: #9090A0; /* gray-400 */
+    font-style: italic;
+    font-size: 0.75rem;
+}
+</style>
 </head>
   <body class="bg-gray-950 text-gray-200">
     <div id="root"></div>
